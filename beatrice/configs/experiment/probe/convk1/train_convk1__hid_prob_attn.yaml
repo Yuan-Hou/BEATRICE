@@ -1,0 +1,78 @@
+experiment_name: train_convk1__hid_prob_attn
+model_name: Qwen/Qwen3.5-9B
+data:
+  train_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/musique_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/hotpotqa_supporting_only_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/twowiki_supporting_only_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_rewritten_context_L17_rd/rewritten_context_cqa_features_meta.jsonl
+  validation_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/musique_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/hotpotqa_supporting_only_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/twowiki_supporting_only_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_rewritten_context_L17_rd/rewritten_context_cqa_features_meta.jsonl
+  rag_class_meta_paths: []
+  train_splits:
+  - train
+  validation_splits:
+  - validation
+  judge_consensus_purified: true
+  purification_summary_path: data/features_judge_consensus/purification_summary.json
+  validation_partition:
+    enabled: true
+    source_splits:
+    - validation
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: validation
+    name: fixed_validation
+  train_partition:
+    enabled: true
+    source_splits:
+    - train
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: train
+    name: fixed_train
+probe:
+  architecture: context_question_answer_resnet
+  max_context_len: 2048
+  context_max_len: 2048
+  question_max_len: 128
+  answer_max_len: 32
+  embed_proj_dim: 32
+  num_res_blocks: 3
+  batch_size: 256
+  epochs: 40
+  learning_rate: 1.0e-05
+  weight_decay: 0.01
+  num_workers: 0
+  hidden_dim: 128
+  positive_transition: NY
+  label_mode: with_context_correct
+  rag_class_loss_weight: 0.0
+  aux_binary_loss_weight: 0.0
+  rag_class_regression_transition: YN
+  rag_class_weighting: sqrt_inverse
+  rag_class_max_weight: 10.0
+  lr_scheduler_factor: 0.5
+  lr_scheduler_patience: 4
+  min_learning_rate: 1.0e-07
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+  noise_std: 0.03
+  dropout: 0.1
+  hidden_proj_dim: 32
+  pin_memory: false
+  show_progress: true
+  torch_num_threads: 4
+  torch_num_interop_threads: 1
+  use_token_embedding: false
+  use_attention_features: true
+  use_probability_features: true
+  use_residual_features: false
+  use_last_hidden: true
+  use_numeric_features: true
+  use_attention_mass: true
+  conv_kernel_size: 1
+output:
+  checkpoint_path: outputs/convk1_probes/convk1__hid_prob_attn/context_checkpoint.pth
+  val_prediction_path: outputs/convk1_probes/convk1__hid_prob_attn/context_val_preds.jsonl

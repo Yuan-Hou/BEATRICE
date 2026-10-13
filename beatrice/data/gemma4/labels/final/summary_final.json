@@ -1,0 +1,67 @@
+{
+  "fill_stats": {
+    "train:hotpotqa_supporting_only/train": {
+      "total": 10000,
+      "kept_original": 9831,
+      "filled": 169
+    },
+    "train:musique/train": {
+      "total": 10000,
+      "kept_original": 9773,
+      "filled": 227
+    },
+    "train:twowiki_supporting_only/train": {
+      "total": 10000,
+      "kept_original": 9790,
+      "filled": 210
+    },
+    "validation:hotpotqa_supporting_only/validation": {
+      "total": 500,
+      "kept_original": 492,
+      "filled": 8
+    },
+    "validation:musique/validation": {
+      "total": 500,
+      "kept_original": 491,
+      "filled": 9
+    },
+    "validation:twowiki_supporting_only/validation": {
+      "total": 500,
+      "kept_original": 494,
+      "filled": 6
+    },
+    "test:hotpotqa_supporting_only/validation": {
+      "total": 500,
+      "kept_original": 489,
+      "filled": 11
+    },
+    "test:musique/validation": {
+      "total": 500,
+      "kept_original": 484,
+      "filled": 16
+    },
+    "test:popqa/test": {
+      "total": 1000,
+      "kept_original": 995,
+      "filled": 5
+    },
+    "test:twowiki_supporting_only/validation": {
+      "total": 500,
+      "kept_original": 497,
+      "filled": 3
+    },
+    "nq": {
+      "total": 1182,
+      "kept_original": 1142,
+      "filled": 40
+    },
+    "triviaqa": {
+      "total": 1277,
+      "kept_original": 1263,
+      "filled": 14
+    }
+  },
+  "scope_path": "./configs/sampling/gemma4_scope_ids.json",
+  "supplement_pass": 2463,
+  "original_kept": 33336
+}

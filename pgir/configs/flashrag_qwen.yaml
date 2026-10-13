@@ -1,0 +1,48 @@
+# PGIR FlashRAG host config — shared by baselines and PGIR (fairness §6).
+# Generator = the ALREADY-RUNNING vLLM server (same weights as probe scorer's
+# backbone); thinking mode force-disabled (Qwen3.5 defaults it ON and mixes
+# reasoning into the output).
+data_dir: "pgir/datasets/"
+save_dir: "pgir/runs/flashrag/"
+
+gpu_id: "3"                      # query-encoder only (e5-base); gpu0 is reserved
+dataset_name: "hotpotqa"         # override per run: hotpotqa | twowiki | musique | popqa
+split: ["test"]
+test_sample_num: ~
+random_sample: false
+seed: 17
+save_intermediate_data: true
+save_note: "pgir"
+
+# ---- retrieval: E5-base-v2 + wiki18_100w, k=3, identical for every system ----
+retrieval_method: "e5"
+retrieval_model_path: "intfloat/e5-base-v2"
+index_path: "pgir/indexes/data00/jiajie_jin/flashrag_indexes/wiki_dpr_100w/e5_flat_inner.index"
+faiss_gpu: false                 # 2TB RAM; Flat index lives on CPU
+corpus_path: "pgir/corpus/wiki18_100w.jsonl"
+retrieval_topk: 3
+retrieval_batch_size: 256
+retrieval_query_max_length: 128
+
+# ---- generation: OpenAI-compatible endpoint of the running vLLM server ----
+framework: openai
+generator_model: "Qwen/Qwen3.5-9B"
+openai_setting:
+  api_key: "EMPTY"
+  base_url: "http://localhost:2333/v1"
+  timeout: 1800        # full-split batches queue behind each other; default 600s times out
+  max_retries: 3
+generator_max_input_len: 8192
+generator_batch_size: 16
+generation_params:
+  temperature: 0.0               # greedy everywhere (fairness §6-1)
+  max_tokens: 256
+  extra_body:
+    chat_template_kwargs:
+      enable_thinking: false     # Qwen3.5 thinking default OFF for all systems
+
+metrics: ["em", "f1"]
+metric_setting:
+  retrieval_recall_topk: 3
+  tokenizer_name: "gpt-4"
+save_metric_score: true

@@ -1,0 +1,48 @@
+diff --git a/flashrag/generator/openai_generator.py b/flashrag/generator/openai_generator.py
+index 9912fee..629c192 100644
+--- a/flashrag/generator/openai_generator.py
++++ b/flashrag/generator/openai_generator.py
+@@ -34,10 +34,16 @@ class OpenaiGenerator:
+             self.client = AsyncOpenAI(**self.openai_setting)
+         try:
+             self.tokenizer = tiktoken.encoding_for_model(self.model_name)
+-        except Exception as e:
+-            print("Warning: ", e)
+-            warnings.warn("This model is not supported by tiktoken. Use gpt-3.5-turbo instead.")
+-            self.tokenizer = tiktoken.encoding_for_model('gpt-3.5-turbo')
++        except Exception:
++            # HF-served model (e.g. local vLLM): use its real tokenizer so
++            # pipelines needing HF tokenizer semantics (FLARE) work.
++            try:
++                from transformers import AutoTokenizer
++                self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
++            except Exception as e:
++                print("Warning: ", e)
++                warnings.warn("This model is not supported by tiktoken. Use gpt-3.5-turbo instead.")
++                self.tokenizer = tiktoken.encoding_for_model('gpt-3.5-turbo')
+     @property
+     def config(self):
+         return self._config
+@@ -64,8 +70,8 @@ class OpenaiGenerator:
+         pass
+     
+     async def _get_response(self, messages: Union[list, str], mode: str = 'chat', **params):
+-        print(messages)
+-        print("----asd-asd-a--------")
++
++
+         if mode == 'chat':
+             response = await self.client.chat.completions.create(
+                 model=self.model_name, messages=messages, **params
+@@ -91,6 +97,11 @@ class OpenaiGenerator:
+         return all_results
+ 
+     async def _generate_async(self, input_list: List, batch_size=None, return_scores=False, **params) -> List[str]:
++        if isinstance(input_list, str):
++            # a bare prompt string must NOT be iterated character-by-character
++            input_list = [input_list]
++        if not input_list:
++            return ([], []) if return_scores else []
+         if isinstance(input_list, dict):
+             input_list = [[input_list]]
+         elif isinstance(input_list[0], dict):

@@ -1,0 +1,28 @@
+# Probe scorer HTTP service (Qwen3.5-9B): online training-format feature
+# extraction -> frozen-fusion probe -> P(answer correct).
+# Run from the beatrice/ directory:
+#   python scripts/serve_probe_scorer.py --config configs/experiment/services/serve_probe_scorer_qwen.yaml
+model_name: Qwen/Qwen3.5-9B
+gpu_id: "0"
+host: 0.0.0.0
+port: 8008
+
+context_fusion_checkpoint: checkpoints/qwen/fusion_context_greedy_k2.pth
+question_fusion_checkpoint: checkpoints/qwen/fusion_question_greedy_k3.pth
+dual_fusion_checkpoint: checkpoints/qwen/fusion_joint_greedy_k3_head.pth
+
+qonly_cache:
+  max_entries: 20000
+  ttl_s: 1800
+
+feature:
+  torch_dtype: bfloat16
+  attn_implementation: eager   # training features were extracted with eager; do not change
+  device_map: cuda
+  hidden_layer: 17
+
+batch:
+  max_batch_size: 8
+  max_wait_ms: 50
+  max_queue_size: 4096
+  queue_timeout: 600

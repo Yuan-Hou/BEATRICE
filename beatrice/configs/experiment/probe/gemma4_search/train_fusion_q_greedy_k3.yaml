@@ -1,0 +1,60 @@
+experiment_name: gemma4_fusion_q_greedy_k3
+model_name: google/gemma-4-E4B-it
+data:
+  train_meta_paths:
+  - data/gemma4/features/gemma4_question_L26_rd/musique_question_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_question_L26_rd/hotpotqa_supporting_only_question_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_question_L26_rd/twowiki_supporting_only_question_features_meta_ok.jsonl
+  validation_meta_paths:
+  - data/gemma4/features/gemma4_question_L26_rd/musique_question_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_question_L26_rd/hotpotqa_supporting_only_question_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_question_L26_rd/twowiki_supporting_only_question_features_meta_ok.jsonl
+  train_splits:
+  - train
+  validation_splits:
+  - validation
+  train_partition:
+    enabled: true
+    source_splits:
+    - train
+    ids_path: configs/sampling/gemma4_scope_ids.json
+    group: train
+    name: gemma4_train
+  validation_partition:
+    enabled: true
+    source_splits:
+    - validation
+    ids_path: configs/sampling/gemma4_scope_ids.json
+    group: validation
+    name: gemma4_validation
+probe:
+  architecture: question_answer_frozen_encoder_fusion
+  batch_size: 512
+  epochs: 60
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  num_workers: 0
+  hidden_dim: 128
+  fusion_hidden_dim: 128
+  dropout: 0.15
+  modality_dropout: 0.3
+  positive_transition: NY
+  label_mode: without_context_correct
+  lr_scheduler_factor: 0.5
+  lr_scheduler_patience: 4
+  min_learning_rate: 1.0e-07
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+  show_progress: true
+  pin_memory: false
+  branch_checkpoints:
+  - name: hidden
+    checkpoint_path: outputs/gemma4/L17rd_attn_probes/only_hidden/question_checkpoint.pth
+  - name: hid_prob_attn
+    checkpoint_path: outputs/gemma4/L17rd_attn_triples_probes/hid_prob_attn/question_checkpoint.pth
+  - name: quad
+    checkpoint_path: outputs/gemma4/L17rd_attn_triples_probes/quad/question_checkpoint.pth
+  use_attention_mass: true
+output:
+  checkpoint_path: outputs/gemma4/checkpoints/frozen_fusion_question_gemma4_greedy_k3.pth
+  val_prediction_path: outputs/gemma4/predictions/frozen_fusion_question_gemma4_greedy_k3_val.jsonl

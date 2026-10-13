@@ -1,0 +1,177 @@
+{
+ "layer": 26,
+ "packed_root": "data/gemma4/packed_features",
+ "units": [
+  {
+   "family": "q",
+   "unit": "q_musique_question",
+   "config": "configs/experiment/features/gemma4/q/musique_question.yaml",
+   "meta": "data/gemma4/features/gemma4_question_L26_rd/musique_question_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_question_L26_rd/musique_question_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_question_L26_rd/musique_question_tensors_sidecars",
+   "rows": 11000
+  },
+  {
+   "family": "q",
+   "unit": "q_hotpotqa_supporting_only_question",
+   "config": "configs/experiment/features/gemma4/q/hotpotqa_supporting_only_question.yaml",
+   "meta": "data/gemma4/features/gemma4_question_L26_rd/hotpotqa_supporting_only_question_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_question_L26_rd/hotpotqa_supporting_only_question_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_question_L26_rd/hotpotqa_supporting_only_question_tensors_sidecars",
+   "rows": 11000
+  },
+  {
+   "family": "q",
+   "unit": "q_twowiki_supporting_only_question",
+   "config": "configs/experiment/features/gemma4/q/twowiki_supporting_only_question.yaml",
+   "meta": "data/gemma4/features/gemma4_question_L26_rd/twowiki_supporting_only_question_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_question_L26_rd/twowiki_supporting_only_question_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_question_L26_rd/twowiki_supporting_only_question_tensors_sidecars",
+   "rows": 11000
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_rewritten_context_shard0of4",
+   "config": "configs/experiment/features/gemma4/ctx/rewritten_context_shard0of4.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard0of4_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard0of4_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard0of4_tensors_sidecars",
+   "rows": 8500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_rewritten_context_shard1of4",
+   "config": "configs/experiment/features/gemma4/ctx/rewritten_context_shard1of4.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard1of4_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard1of4_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard1of4_tensors_sidecars",
+   "rows": 8500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_rewritten_context_shard2of4",
+   "config": "configs/experiment/features/gemma4/ctx/rewritten_context_shard2of4.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_tensors_sidecars",
+   "rows": 8500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_rewritten_context_shard3of4",
+   "config": "configs/experiment/features/gemma4/ctx/rewritten_context_shard3of4.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard3of4_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard3of4_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/rewritten_context_shard3of4_tensors_sidecars",
+   "rows": 8500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_musique_shard0of2",
+   "config": "configs/experiment/features/gemma4/ctx/musique_shard0of2.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/musique_shard0of2_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/musique_shard0of2_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/musique_shard0of2_tensors_sidecars",
+   "rows": 5500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_musique_shard1of2",
+   "config": "configs/experiment/features/gemma4/ctx/musique_shard1of2.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/musique_shard1of2_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/musique_shard1of2_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/musique_shard1of2_tensors_sidecars",
+   "rows": 5500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_hotpotqa_supporting_only_shard0of2",
+   "config": "configs/experiment/features/gemma4/ctx/hotpotqa_supporting_only_shard0of2.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_tensors_sidecars",
+   "rows": 5500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_hotpotqa_supporting_only_shard1of2",
+   "config": "configs/experiment/features/gemma4/ctx/hotpotqa_supporting_only_shard1of2.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_tensors_sidecars",
+   "rows": 5500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_twowiki_supporting_only_shard0of2",
+   "config": "configs/experiment/features/gemma4/ctx/twowiki_supporting_only_shard0of2.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_tensors_sidecars",
+   "rows": 5500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_twowiki_supporting_only_shard1of2",
+   "config": "configs/experiment/features/gemma4/ctx/twowiki_supporting_only_shard1of2.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_tensors_sidecars",
+   "rows": 5500
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_triviaqa",
+   "config": "configs/experiment/features/gemma4/ctx/triviaqa.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/triviaqa_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/triviaqa_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/triviaqa_tensors_sidecars",
+   "rows": 1277
+  },
+  {
+   "family": "q",
+   "unit": "q_triviaqa_question",
+   "config": "configs/experiment/features/gemma4/q/triviaqa_question.yaml",
+   "meta": "data/gemma4/features/gemma4_question_L26_rd/triviaqa_question_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_question_L26_rd/triviaqa_question_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_question_L26_rd/triviaqa_question_tensors_sidecars",
+   "rows": 1277
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_nq",
+   "config": "configs/experiment/features/gemma4/ctx/nq.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/nq_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/nq_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/nq_tensors_sidecars",
+   "rows": 1182
+  },
+  {
+   "family": "q",
+   "unit": "q_nq_question",
+   "config": "configs/experiment/features/gemma4/q/nq_question.yaml",
+   "meta": "data/gemma4/features/gemma4_question_L26_rd/nq_question_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_question_L26_rd/nq_question_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_question_L26_rd/nq_question_tensors_sidecars",
+   "rows": 1182
+  },
+  {
+   "family": "ctx",
+   "unit": "ctx_popqa",
+   "config": "configs/experiment/features/gemma4/ctx/popqa.yaml",
+   "meta": "data/gemma4/features/gemma4_L26_rd/popqa_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_L26_rd/popqa_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_L26_rd/popqa_tensors_sidecars",
+   "rows": 1000
+  },
+  {
+   "family": "q",
+   "unit": "q_popqa_question",
+   "config": "configs/experiment/features/gemma4/q/popqa_question.yaml",
+   "meta": "data/gemma4/features/gemma4_question_L26_rd/popqa_question_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features/gemma4_question_L26_rd/popqa_question_tensors",
+   "sidecar_dir": "data/gemma4/features/gemma4_question_L26_rd/popqa_question_tensors_sidecars",
+   "rows": 1000
+  }
+ ]
+}

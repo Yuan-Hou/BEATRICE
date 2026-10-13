@@ -1,0 +1,240 @@
+{
+  "audit_filter": {
+    "min_agreement": 1.0,
+    "require_parse_ok": true,
+    "require_all_prompt_parse": true,
+    "require_original_audit_agree": false,
+    "apply_audit_labels": true,
+    "allowed_issue_types": []
+  },
+  "audit_stats": {
+    "audit_records": 330006,
+    "audit_kept": 311248,
+    "audit_dropped_reasons": {
+      "low_agreement:with_context": 3500,
+      "parse_failed": 11198,
+      "low_agreement:without_context": 4060
+    },
+    "duplicate_keys": 0,
+    "kept_by_dataset": {
+      "popqa": 13594,
+      "hotpotqa": 88980,
+      "twowiki": 174094,
+      "musique": 34580
+    },
+    "kept_transition_audit": {
+      "YN": 4334,
+      "NN": 31779,
+      "NY": 160977,
+      "YY": 114158
+    }
+  },
+  "outputs": [
+    {
+      "input_path": "data/features/qwen3_5_9b/musique_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b/musique_features_meta.jsonl",
+      "seen": 11000,
+      "kept": 9890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "train": 9000,
+        "validation": 890
+      },
+      "by_dataset": {
+        "musique": 9890
+      },
+      "transition_before": {
+        "NN": 3896,
+        "NY": 4376,
+        "YY": 1348,
+        "YN": 270
+      },
+      "transition_after": {
+        "NN": 3732,
+        "NY": 4426,
+        "YY": 1464,
+        "YN": 268
+      }
+    },
+    {
+      "input_path": "data/features/qwen3_5_9b/hotpotqa_supporting_only_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b/hotpotqa_supporting_only_features_meta.jsonl",
+      "seen": 11000,
+      "kept": 9890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "train": 9000,
+        "validation": 890
+      },
+      "by_dataset": {
+        "hotpotqa": 9890
+      },
+      "transition_before": {
+        "NY": 5612,
+        "YY": 3565,
+        "NN": 614,
+        "YN": 99
+      },
+      "transition_after": {
+        "NY": 5619,
+        "YY": 3767,
+        "NN": 410,
+        "YN": 94
+      }
+    },
+    {
+      "input_path": "data/features/qwen3_5_9b/twowiki_supporting_only_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b/twowiki_supporting_only_features_meta.jsonl",
+      "seen": 11000,
+      "kept": 9890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "train": 9000,
+        "validation": 890
+      },
+      "by_dataset": {
+        "twowiki": 9890
+      },
+      "transition_before": {
+        "NY": 5294,
+        "YY": 3878,
+        "NN": 589,
+        "YN": 129
+      },
+      "transition_after": {
+        "NY": 5368,
+        "YY": 3973,
+        "NN": 423,
+        "YN": 126
+      }
+    },
+    {
+      "input_path": "data/features/qwen3_5_9b/popqa_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b/popqa_features_meta.jsonl",
+      "seen": 1000,
+      "kept": 890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "test": 890
+      },
+      "by_dataset": {
+        "popqa": 890
+      },
+      "transition_before": {
+        "NN": 533,
+        "NY": 175,
+        "YY": 153,
+        "YN": 29
+      },
+      "transition_after": {
+        "NY": 176,
+        "YY": 173,
+        "YN": 28,
+        "NN": 513
+      }
+    },
+    {
+      "input_path": "data/features/qwen3_5_9b_question/musique_question_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b_question/musique_question_features_meta.jsonl",
+      "seen": 11000,
+      "kept": 9890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "train": 9000,
+        "validation": 890
+      },
+      "by_dataset": {
+        "musique": 9890
+      },
+      "transition_before": {
+        "NN": 3896,
+        "NY": 4376,
+        "YY": 1348,
+        "YN": 270
+      },
+      "transition_after": {
+        "NN": 3732,
+        "NY": 4426,
+        "YY": 1464,
+        "YN": 268
+      }
+    },
+    {
+      "input_path": "data/features/qwen3_5_9b_question/hotpotqa_supporting_only_question_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b_question/hotpotqa_supporting_only_question_features_meta.jsonl",
+      "seen": 11000,
+      "kept": 9890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "train": 9000,
+        "validation": 890
+      },
+      "by_dataset": {
+        "hotpotqa": 9890
+      },
+      "transition_before": {
+        "NY": 5612,
+        "YY": 3565,
+        "NN": 614,
+        "YN": 99
+      },
+      "transition_after": {
+        "NY": 5619,
+        "YY": 3767,
+        "NN": 410,
+        "YN": 94
+      }
+    },
+    {
+      "input_path": "data/features/qwen3_5_9b_question/twowiki_supporting_only_question_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b_question/twowiki_supporting_only_question_features_meta.jsonl",
+      "seen": 11000,
+      "kept": 9890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "train": 9000,
+        "validation": 890
+      },
+      "by_dataset": {
+        "twowiki": 9890
+      },
+      "transition_before": {
+        "NY": 5294,
+        "YY": 3878,
+        "NN": 589,
+        "YN": 129
+      },
+      "transition_after": {
+        "NY": 5368,
+        "YY": 3973,
+        "NN": 423,
+        "YN": 126
+      }
+    },
+    {
+      "input_path": "data/features/qwen3_5_9b_question/popqa_question_features_meta.jsonl",
+      "output_path": "data/features_judge_consensus/qwen3_5_9b_question/popqa_question_features_meta.jsonl",
+      "seen": 1000,
+      "kept": 890,
+      "dropped_no_audit": 0,
+      "by_split": {
+        "test": 890
+      },
+      "by_dataset": {
+        "popqa": 890
+      },
+      "transition_before": {
+        "NN": 533,
+        "NY": 175,
+        "YY": 153,
+        "YN": 29
+      },
+      "transition_after": {
+        "NY": 176,
+        "YY": 173,
+        "YN": 28,
+        "NN": 513
+      }
+    }
+  ]
+}

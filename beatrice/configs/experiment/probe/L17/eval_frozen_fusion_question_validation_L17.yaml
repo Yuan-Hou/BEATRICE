@@ -1,0 +1,28 @@
+experiment_name: eval_frozen_fusion_question_validation_L17
+model_name: Qwen/Qwen3.5-9B
+gpu_id: '0'
+data:
+  meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_question_L17/musique_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question_L17/hotpotqa_supporting_only_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question_L17/twowiki_supporting_only_question_features_meta.jsonl
+  splits:
+  - validation
+  partition:
+    enabled: true
+    source_splits:
+    - validation
+    - test
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: validation
+    name: fixed_validation
+  judge_consensus_purified: true
+  purification_summary_path: data/features_judge_consensus/aligned_rewrite_final_summary.json
+probe:
+  architecture: question_answer_frozen_encoder_fusion
+  batch_size: 512
+  label_mode: without_context_correct
+checkpoint_path: outputs/checkpoints/frozen_fusion_question_answer_noctx_L17.pth
+output:
+  prediction_path: outputs/predictions/frozen_fusion_question_validation_L17_preds.jsonl
+  report_path: outputs/reports/frozen_fusion_question_validation_L17.html

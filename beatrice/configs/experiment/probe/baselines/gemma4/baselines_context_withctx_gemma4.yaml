@@ -1,0 +1,76 @@
+experiment_name: baselines_context_withctx_gemma4
+model_name: google/gemma-4-E4B-it
+data:
+  train_meta_paths:
+  - data/gemma4/features/gemma4_L26_rd/musique_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/musique_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_features_meta_ok.jsonl
+  validation_meta_paths:
+  - data/gemma4/features/gemma4_L26_rd/musique_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/musique_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_features_meta_ok.jsonl
+  train_splits:
+  - train
+  validation_splits:
+  - validation
+  train_partition:
+    enabled: true
+    source_splits:
+    - train
+    ids_path: configs/sampling/gemma4_scope_ids.json
+    group: train
+    name: gemma4_train
+  validation_partition:
+    enabled: true
+    source_splits:
+    - validation
+    ids_path: configs/sampling/gemma4_scope_ids.json
+    group: validation
+    name: gemma4_validation
+  eval_meta_sets:
+  - name: test_id
+    meta_paths:
+    - data/gemma4/features/gemma4_L26_rd/musique_shard0of2_features_meta_ok.jsonl
+    - data/gemma4/features/gemma4_L26_rd/musique_shard1of2_features_meta_ok.jsonl
+    - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_features_meta_ok.jsonl
+    - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_features_meta_ok.jsonl
+    - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_features_meta_ok.jsonl
+    - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_features_meta_ok.jsonl
+    splits:
+    - validation
+    partition:
+      enabled: true
+      source_splits:
+      - validation
+      ids_path: configs/sampling/gemma4_scope_ids.json
+      group: test
+      name: gemma4_test
+  - name: popqa_ood
+    meta_paths:
+    - data/gemma4/features/gemma4_L26_rd/popqa_features_meta_ok.jsonl
+    splits:
+    - test
+  - name: nq
+    meta_paths:
+    - data/gemma4/features/gemma4_L26_rd/nq_features_meta_ok.jsonl
+    splits:
+    - validation
+  - name: triviaqa
+    meta_paths:
+    - data/gemma4/features/gemma4_L26_rd/triviaqa_features_meta_ok.jsonl
+    splits:
+    - validation
+probe:
+  segment: answer
+  label_mode: with_context_correct
+  positive_transition: NY
+  threshold: 0.5
+output:
+  output_dir: outputs/gemma4/predictions/baselines/bclass/context_withctx
+  prefix: baselines_context_withctx_gemma4

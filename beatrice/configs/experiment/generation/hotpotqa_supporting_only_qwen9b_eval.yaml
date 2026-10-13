@@ -1,0 +1,31 @@
+experiment_name: hotpotqa_supporting_only_qwen9b_eval
+dataset_path: data/processed/hotpotqa_supporting_only_all_splits.jsonl
+model:
+  name: Qwen/Qwen3.5-9B
+  backend: openai_compatible
+  api_key: EMPTY
+  base_url: http://localhost:2333/v1
+  enable_thinking: false
+judge_model:
+  name: Qwen/Qwen3.5-27B
+  backend: openai_compatible
+  api_key: EMPTY
+  base_url: http://localhost:2334/v1
+  enable_thinking: false
+judge:
+  voting:
+    enabled: true
+    tie_break: incorrect
+    variants:
+    - strict_semantic
+    - alias_friendly
+    - decomposed_fact
+runtime:
+  num_workers: 16
+  save_every: 100
+  resume: true
+output:
+  result_path: data/generations/hotpotqa_supporting_only_qwen3_5_9b_results.jsonl
+  regression_path: data/regression/hotpotqa_supporting_only_qwen3_5_9b_regressions.jsonl
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

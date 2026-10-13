@@ -1,0 +1,99 @@
+{
+  "hotpotqa_supporting_only": {
+    "source_examples": 11000,
+    "generated": 11000,
+    "kept_unanimous": 10848,
+    "kept_ratio": 0.9862,
+    "judged_runs": 22000,
+    "unanimous_runs": 21845,
+    "run_unanimity_rate": 0.993,
+    "accuracy": {
+      "with_context": 0.9215,
+      "without_context": 0.2041
+    },
+    "qwen9b_reference_rows": null
+  },
+  "musique": {
+    "source_examples": 11000,
+    "generated": 11000,
+    "kept_unanimous": 10815,
+    "kept_ratio": 0.9832,
+    "judged_runs": 22000,
+    "unanimous_runs": 21810,
+    "run_unanimity_rate": 0.9914,
+    "accuracy": {
+      "with_context": 0.3918,
+      "without_context": 0.0472
+    },
+    "qwen9b_reference_rows": null
+  },
+  "twowiki_supporting_only": {
+    "source_examples": 11000,
+    "generated": 11000,
+    "kept_unanimous": 10847,
+    "kept_ratio": 0.9861,
+    "judged_runs": 22000,
+    "unanimous_runs": 21846,
+    "run_unanimity_rate": 0.993,
+    "accuracy": {
+      "with_context": 0.919,
+      "without_context": 0.0704
+    },
+    "qwen9b_reference_rows": null
+  },
+  "popqa": {
+    "source_examples": 1000,
+    "generated": 1000,
+    "kept_unanimous": 997,
+    "kept_ratio": 0.997,
+    "judged_runs": 2000,
+    "unanimous_runs": 1997,
+    "run_unanimity_rate": 0.9985,
+    "accuracy": {
+      "with_context": 0.345,
+      "without_context": 0.1364
+    },
+    "qwen9b_reference_rows": null
+  },
+  "nq": {
+    "source_examples": 1182,
+    "generated": 1182,
+    "kept_unanimous": 1142,
+    "kept_ratio": 0.9662,
+    "judged_runs": 2364,
+    "unanimous_runs": 2324,
+    "run_unanimity_rate": 0.9831,
+    "accuracy": {
+      "with_context": 0.2391,
+      "without_context": 0.3003
+    },
+    "qwen9b_reference_rows": null
+  },
+  "triviaqa": {
+    "source_examples": 1277,
+    "generated": 1277,
+    "kept_unanimous": 1263,
+    "kept_ratio": 0.989,
+    "judged_runs": 2554,
+    "unanimous_runs": 2540,
+    "run_unanimity_rate": 0.9945,
+    "accuracy": {
+      "with_context": 0.5582,
+      "without_context": 0.5615
+    },
+    "qwen9b_reference_rows": null
+  },
+  "rewritten_context": {
+    "source_examples": 34000,
+    "generated": 34000,
+    "kept_unanimous": 33677,
+    "kept_ratio": 0.9905,
+    "judged_runs": 34000,
+    "unanimous_runs": 33677,
+    "run_unanimity_rate": 0.9905,
+    "accuracy": {
+      "with_context": 0.7683
+    },
+    "qwen9b_reference_rows": null
+  }
+}

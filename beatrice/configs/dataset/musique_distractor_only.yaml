@@ -1,0 +1,11 @@
+dataset:
+  name: musique
+  args:
+    include_splits:
+    - train
+    - validation
+    context_mode: distractor_only
+    max_examples: null
+output_path: data/processed/musique_distractor_only_train_validation.jsonl
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

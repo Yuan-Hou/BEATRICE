@@ -1,0 +1,22 @@
+experiment_name: musique_qwen9b_features
+model_name: Qwen/Qwen3.5-9B
+gpu_id: '2'
+max_examples: null
+resume: false
+retry_failed: true
+save_every_batches: 2000
+input_result_path: data/generations/musique_qwen3_5_9b_results.jsonl
+output:
+  meta_path: data/features/qwen3_5_9b/musique_features_meta.jsonl
+  tensor_dir: data/features/qwen3_5_9b/musique_tensors
+  token_ids_dir: data/features/qwen3_5_9b/musique_token_ids
+  sidecar_dir: data/features/qwen3_5_9b/musique_tensors_sidecars
+feature:
+  target_type: context
+  max_context_len: 2048
+  attn_implementation: eager
+  torch_dtype: bfloat16
+  answer_tokens: 32
+  prob_top_k: 20
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

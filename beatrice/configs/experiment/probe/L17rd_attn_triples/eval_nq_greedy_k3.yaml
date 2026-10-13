@@ -1,0 +1,17 @@
+experiment_name: eval_fusion_nq_L17rd_attn_greedy_k3
+model_name: Qwen/Qwen3.5-9B
+gpu_id: '4'
+data:
+  meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_question_L17_rd/nq_question_features_meta.jsonl
+  splits:
+  - validation
+  judge_consensus_purified: true
+probe:
+  architecture: question_answer_frozen_encoder_fusion
+  batch_size: 512
+  label_mode: without_context_correct
+checkpoint_path: outputs/checkpoints/frozen_fusion_question_answer_noctx_L17rd_attn_greedy_k3.pth
+output:
+  prediction_path: outputs/predictions/frozen_fusion_question_nq_L17rd_attn_greedyk3_preds.jsonl
+  report_path: outputs/reports/frozen_fusion_question_nq_L17rd_attn_greedyk3.html

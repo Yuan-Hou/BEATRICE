@@ -1,0 +1,13 @@
+dataset:
+  name: twowiki
+  args:
+    dataset_name: framolfese/2WikiMultihopQA
+    include_splits:
+    - train
+    - validation
+    - test
+    context_mode: supporting_only
+    max_examples: null
+output_path: data/processed/twowiki_supporting_only_all_splits.jsonl
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

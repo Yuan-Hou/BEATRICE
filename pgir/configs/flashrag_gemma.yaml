@@ -1,0 +1,47 @@
+# PGIR FlashRAG host config — Gemma backbone migration (2026-07-17).
+# Same retrieval stack / metrics / decoding as flashrag_qwen.yaml (fairness §6);
+# only the generator changes: google/gemma-4-E4B-it on the user's vLLM :2335.
+# No enable_thinking knob (Qwen-only). Select via PGIR_FLASHRAG_YAML.
+data_dir: "pgir/datasets/"
+save_dir: "pgir/runs/flashrag_gemma/"
+
+gpu_id: "7"                      # query-encoder only (e5-base); rides with the :2335 vLLM card
+dataset_name: "hotpotqa"
+split: ["test"]
+test_sample_num: ~
+random_sample: false
+seed: 17
+save_intermediate_data: true
+save_note: "pgir"
+
+# ---- retrieval: E5-base-v2 + wiki18_100w, k=3, identical for every system ----
+retrieval_method: "e5"
+retrieval_model_path: "intfloat/e5-base-v2"
+index_path: "pgir/indexes/data00/jiajie_jin/flashrag_indexes/wiki_dpr_100w/e5_flat_inner.index"
+faiss_gpu: false                 # 2TB RAM; Flat index lives on CPU
+corpus_path: "pgir/corpus/wiki18_100w.jsonl"
+retrieval_topk: 3
+retrieval_batch_size: 256
+retrieval_query_max_length: 128
+
+# ---- generation: OpenAI-compatible endpoint of the running vLLM server ----
+# (2335 was the user's deployment, torn down 07-17 via the shutdown-signal
+#  protocol; 2337 is our own instance on gpu7 — same model, same flags)
+framework: openai
+generator_model: "google/gemma-4-E4B-it"
+openai_setting:
+  api_key: "EMPTY"
+  base_url: "http://localhost:2337/v1"
+  timeout: 1800
+  max_retries: 3
+generator_max_input_len: 8192
+generator_batch_size: 16
+generation_params:
+  temperature: 0.0               # greedy everywhere (fairness §6-1)
+  max_tokens: 256
+
+metrics: ["em", "f1"]
+metric_setting:
+  retrieval_recall_topk: 3
+  tokenizer_name: "gpt-4"
+save_metric_score: true

@@ -1,0 +1,10 @@
+dataset:
+  name: popqa
+  args:
+    split: test
+    max_examples: null
+    num_workers: 32
+    wikipedia_user_agent: PopQAResearchBot/1.0 academic_research@example.com
+output_path: data/processed/popqa_test.jsonl
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

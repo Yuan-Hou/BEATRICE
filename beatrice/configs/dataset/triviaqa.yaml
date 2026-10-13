@@ -1,0 +1,9 @@
+# TriviaQA OOD test set: rc.wikipedia validation, own evidence pages as contexts.
+dataset:
+  name: triviaqa
+  args:
+    split: validation
+    max_examples: 1300
+    max_pages: 2
+    max_chars_per_page: 1500
+output_path: data/processed/triviaqa_validation.jsonl

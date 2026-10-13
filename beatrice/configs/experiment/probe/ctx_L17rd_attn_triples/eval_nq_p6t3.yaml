@@ -1,0 +1,19 @@
+checkpoint_path: outputs/checkpoints/frozen_fusion_context_question_answer_withctx_ctxL17rd_attn_pairs6_triples3.pth
+data:
+  judge_consensus_purified: true
+  meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/nq_features_meta.jsonl
+  rag_class_meta_paths: []
+  splits:
+  - validation
+experiment_name: eval_fusion_nq_ctxL17rd_attn_pairs6_triples3
+gpu_id: '3'
+model_name: Qwen/Qwen3.5-9B
+output:
+  prediction_path: outputs/predictions/frozen_fusion_context_nq_ctxL17rd_attn_p6t3_preds.jsonl
+  report_path: outputs/reports/frozen_fusion_context_nq_ctxL17rd_attn_p6t3.html
+probe:
+  answer_max_len: 32
+  architecture: context_question_answer_frozen_encoder_fusion
+  batch_size: 32
+  label_mode: with_context_correct

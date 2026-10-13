@@ -1,0 +1,11 @@
+# NQ OOD test set: nq_open questions + live Wikipedia-search contexts (popqa-style).
+# Prepare ~1300; the final 1000-example scope is sampled AFTER generation+features
+# succeed (seed 20260622) and added to configs/sampling/fixed_scope_ids.json.
+dataset:
+  name: nq
+  args:
+    split: validation
+    max_examples: 1300
+    num_workers: 16
+    contexts_per_question: 2
+output_path: data/processed/nq_validation.jsonl

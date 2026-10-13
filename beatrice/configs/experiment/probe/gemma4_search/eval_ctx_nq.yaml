@@ -1,0 +1,6 @@
+experiment_name: gemma4_pc_eval_ctx_nq
+data:
+  meta_paths:
+  - data/gemma4/features/gemma4_L26_rd/nq_features_meta_ok.jsonl
+  splits:
+  - validation

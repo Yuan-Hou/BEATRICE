@@ -1,0 +1,37 @@
+experiment_name: purify_judge_consensus_features
+
+input:
+  audit_paths:
+  - outputs/audits/generation_label_audit_qwen27b_voting.jsonl
+  meta_paths:
+  - input: data/features/qwen3_5_9b/musique_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b/musique_features_meta.jsonl
+  - input: data/features/qwen3_5_9b/hotpotqa_supporting_only_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b/hotpotqa_supporting_only_features_meta.jsonl
+  - input: data/features/qwen3_5_9b/twowiki_supporting_only_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b/twowiki_supporting_only_features_meta.jsonl
+  - input: data/features/qwen3_5_9b/popqa_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b/popqa_features_meta.jsonl
+  - input: data/features/qwen3_5_9b_question/musique_question_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b_question/musique_question_features_meta.jsonl
+  - input: data/features/qwen3_5_9b_question/hotpotqa_supporting_only_question_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b_question/hotpotqa_supporting_only_question_features_meta.jsonl
+  - input: data/features/qwen3_5_9b_question/twowiki_supporting_only_question_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b_question/twowiki_supporting_only_question_features_meta.jsonl
+  - input: data/features/qwen3_5_9b_question/popqa_question_features_meta.jsonl
+    output: data/features_judge_consensus/qwen3_5_9b_question/popqa_question_features_meta.jsonl
+
+audit_filter:
+  min_agreement: 1.0
+  require_parse_ok: true
+  require_all_prompt_parse: true
+  require_original_audit_agree: false
+  apply_audit_labels: true
+  allowed_issue_types: []
+
+output:
+  meta_dir: data/features_judge_consensus
+  summary_path: data/features_judge_consensus/purification_summary.json
+
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

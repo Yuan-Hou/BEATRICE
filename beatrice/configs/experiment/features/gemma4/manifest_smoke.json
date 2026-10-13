@@ -1,0 +1,24 @@
+{
+ "layer": 26,
+ "packed_root": "data/gemma4/packed_features_smoke",
+ "units": [
+  {
+   "family": "ctx",
+   "unit": "ctx_musique_smoke",
+   "config": "configs/experiment/features/gemma4/ctx/musique_smoke.yaml",
+   "meta": "data/gemma4/features_smoke/gemma4_L26_rd/musique_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features_smoke/gemma4_L26_rd/musique_tensors",
+   "sidecar_dir": "data/gemma4/features_smoke/gemma4_L26_rd/musique_tensors_sidecars",
+   "rows": 12
+  },
+  {
+   "family": "q",
+   "unit": "q_musique_question_smoke",
+   "config": "configs/experiment/features/gemma4/q/musique_question_smoke.yaml",
+   "meta": "data/gemma4/features_smoke/gemma4_question_L26_rd/musique_question_features_meta.jsonl",
+   "tensor_dir": "data/gemma4/features_smoke/gemma4_question_L26_rd/musique_question_tensors",
+   "sidecar_dir": "data/gemma4/features_smoke/gemma4_question_L26_rd/musique_question_tensors_sidecars",
+   "rows": 12
+  }
+ ]
+}

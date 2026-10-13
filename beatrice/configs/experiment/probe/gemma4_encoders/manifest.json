@@ -1,0 +1,214 @@
+{
+ "units": [
+  {
+   "unit": "ctx_only_attention",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_only_attention.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_probes/only_attention/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_probes/only_attention/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_only_hidden",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_only_hidden.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_probes/only_hidden/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_probes/only_hidden/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_only_probability",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_only_probability.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_probes/only_probability/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_probes/only_probability/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_only_residual",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_only_residual.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_probes/only_residual/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_probes/only_residual/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_pair_hid_attn",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_pair_hid_attn.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/hid_attn/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/hid_attn/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_pair_hid_prob",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_pair_hid_prob.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/hid_prob/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/hid_prob/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_pair_hid_resid",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_pair_hid_resid.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/hid_resid/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/hid_resid/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_pair_prob_attn",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_pair_prob_attn.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/prob_attn/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/prob_attn/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_pair_prob_resid",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_pair_prob_resid.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/prob_resid/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/prob_resid/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_pair_resid_attn",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_pair_resid_attn.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/resid_attn/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_pairs_probes/resid_attn/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_quad",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_quad.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_triples_probes/quad/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_triples_probes/quad/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_triple_hid_prob_attn",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_triple_hid_prob_attn.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_triples_probes/hid_prob_attn/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_triples_probes/hid_prob_attn/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_triple_hid_prob_resid",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_triple_hid_prob_resid.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_triples_probes/hid_prob_resid/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_triples_probes/hid_prob_resid/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_triple_hid_resid_attn",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_triple_hid_resid_attn.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_triples_probes/hid_resid_attn/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_triples_probes/hid_resid_attn/context_val_preds.jsonl"
+  },
+  {
+   "unit": "ctx_triple_prob_resid_attn",
+   "family": "ctx",
+   "config": "configs/experiment/probe/gemma4_encoders/ctx/ctx_triple_prob_resid_attn.yaml",
+   "checkpoint": "outputs/gemma4/ctx_L17rd_attn_triples_probes/prob_resid_attn/context_checkpoint.pth",
+   "val_preds": "outputs/gemma4/ctx_L17rd_attn_triples_probes/prob_resid_attn/context_val_preds.jsonl"
+  },
+  {
+   "unit": "q_only_attention",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_only_attention.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_probes/only_attention/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_probes/only_attention/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_only_hidden",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_only_hidden.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_probes/only_hidden/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_probes/only_hidden/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_only_probability",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_only_probability.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_probes/only_probability/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_probes/only_probability/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_only_residual",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_only_residual.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_probes/only_residual/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_probes/only_residual/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_pair_hid_attn",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_pair_hid_attn.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_pairs_probes/hid_attn/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_pairs_probes/hid_attn/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_pair_hid_prob",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_pair_hid_prob.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_pairs_probes/hid_prob/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_pairs_probes/hid_prob/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_pair_hid_resid",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_pair_hid_resid.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_pairs_probes/hid_resid/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_pairs_probes/hid_resid/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_pair_prob_attn",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_pair_prob_attn.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_pairs_probes/prob_attn/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_pairs_probes/prob_attn/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_pair_prob_resid",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_pair_prob_resid.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_pairs_probes/prob_resid/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_pairs_probes/prob_resid/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_pair_resid_attn",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_pair_resid_attn.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_pairs_probes/resid_attn/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_pairs_probes/resid_attn/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_quad",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_quad.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_triples_probes/quad/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_triples_probes/quad/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_triple_hid_prob_attn",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_triple_hid_prob_attn.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_triples_probes/hid_prob_attn/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_triples_probes/hid_prob_attn/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_triple_hid_prob_resid",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_triple_hid_prob_resid.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_triples_probes/hid_prob_resid/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_triples_probes/hid_prob_resid/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_triple_hid_resid_attn",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_triple_hid_resid_attn.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_triples_probes/hid_resid_attn/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_triples_probes/hid_resid_attn/question_val_preds.jsonl"
+  },
+  {
+   "unit": "q_triple_prob_resid_attn",
+   "family": "q",
+   "config": "configs/experiment/probe/gemma4_encoders/q/q_triple_prob_resid_attn.yaml",
+   "checkpoint": "outputs/gemma4/L17rd_attn_triples_probes/prob_resid_attn/question_checkpoint.pth",
+   "val_preds": "outputs/gemma4/L17rd_attn_triples_probes/prob_resid_attn/question_val_preds.jsonl"
+  }
+ ]
+}

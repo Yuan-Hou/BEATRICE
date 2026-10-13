@@ -1,0 +1,24 @@
+experiment_name: purify_rewritten_context_features
+
+input:
+  audit_paths:
+  - outputs/audits/generation_label_audit_qwen27b_voting.jsonl
+  rewritten_meta_path: data/features/qwen3_5_9b_rewritten_context/rewritten_context_cqa_features_meta.jsonl
+
+filter:
+  min_agreement: 1.0
+  require_parse_ok: true
+  require_all_prompt_parse: true
+
+output:
+  meta_path: data/features_judge_consensus/qwen3_5_9b_rewritten_context/rewritten_context_cqa_features_meta.jsonl
+  summary_path: data/features_judge_consensus/qwen3_5_9b_rewritten_context/rewritten_context_purification_summary.json
+
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json
+
+sampling:
+  enabled: true
+  seed: 20260611
+  train_per_dataset: 8500
+  eval_per_dataset: 850

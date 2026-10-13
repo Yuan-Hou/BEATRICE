@@ -1,0 +1,42 @@
+experiment_name: rewritten_context_qwen9b_eval
+input:
+  rewrite_records_path: outputs/analysis/embedding_rewrite_viz_full/rewrite_records.jsonl
+  question_field: question
+  require_rewrite_success: true
+  split_filter: []
+  datasets: []
+  max_examples: null
+model:
+  name: Qwen/Qwen3.5-9B
+  backend: openai_compatible
+  api_key: EMPTY
+  base_url: http://localhost:2333/v1
+  enable_thinking: false
+  max_tokens: 256
+  timeout: 120
+  temperature: 0.0
+judge_model:
+  name: Qwen/Qwen3.5-27B
+  backend: openai_compatible
+  api_key: EMPTY
+  base_url: http://localhost:2334/v1
+  enable_thinking: false
+  max_tokens: 32
+  timeout: 120
+  temperature: 0.0
+judge:
+  voting:
+    enabled: true
+    tie_break: incorrect
+    variants:
+    - strict_semantic
+    - alias_friendly
+    - decomposed_fact
+runtime:
+  num_workers: 16
+  save_every: 100
+  resume: true
+output:
+  result_path: data/generations/rewritten_context_qwen3_5_9b_results.jsonl
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

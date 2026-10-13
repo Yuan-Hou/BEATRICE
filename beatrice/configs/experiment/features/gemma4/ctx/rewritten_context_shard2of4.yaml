@@ -1,0 +1,31 @@
+experiment_name: gemma4_ctx_rewritten_context_shard2of4
+model_name: google/gemma-4-E4B-it
+max_examples: null
+resume: true
+retry_failed: true
+save_every_batches: 500
+input_result_path: data/gemma4/generations_final/shards/rewritten_context_results.shard2of4.jsonl
+output:
+  meta_path: data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_features_meta.jsonl
+  tensor_dir: data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_tensors
+  token_ids_dir: data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_token_ids
+  sidecar_dir: data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_tensors_sidecars
+feature:
+  target_type: context
+  max_context_len: 2048
+  answer_tokens: 32
+  prob_top_k: 20
+  attn_implementation: eager
+  torch_dtype: bfloat16
+  hidden_layer: 26
+  add_resid_lens: true
+  attention_layers:
+  - 5
+  - 11
+  - 17
+  - 23
+  - 29
+  - 35
+  - 41
+  answer_source: file
+  answer_file: data/gemma4/trainfmt_answers/rewritten_context.jsonl

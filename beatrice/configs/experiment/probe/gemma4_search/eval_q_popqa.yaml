@@ -1,0 +1,6 @@
+experiment_name: gemma4_pc_eval_q_popqa
+data:
+  meta_paths:
+  - data/gemma4/features/gemma4_question_L26_rd/popqa_question_features_meta_ok.jsonl
+  splits:
+  - test

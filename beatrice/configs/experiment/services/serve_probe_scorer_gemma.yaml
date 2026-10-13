@@ -1,0 +1,28 @@
+# Probe scorer HTTP service (Gemma 4 E4B-it): online training-format feature
+# extraction -> frozen-fusion probe -> P(answer correct).
+# Run from the beatrice/ directory:
+#   python scripts/serve_probe_scorer.py --config configs/experiment/services/serve_probe_scorer_gemma.yaml
+model_name: google/gemma-4-E4B-it
+gpu_id: "0"
+host: 0.0.0.0
+port: 8008
+
+context_fusion_checkpoint: checkpoints/gemma/fusion_context_greedy_k3.pth
+question_fusion_checkpoint: checkpoints/gemma/fusion_question_greedy_k3.pth
+
+qonly_cache:
+  max_entries: 20000
+  ttl_s: 1800
+
+feature:
+  torch_dtype: bfloat16
+  attn_implementation: eager   # training features were extracted with eager; do not change
+  device_map: cuda
+  hidden_layer: 26             # Gemma uses layer 26 (Qwen uses layer 17)
+  attention_layers: [5, 11, 17, 23, 29, 35, 41]   # Gemma full-attention layers
+
+batch:
+  max_batch_size: 8
+  max_wait_ms: 50
+  max_queue_size: 4096
+  queue_timeout: 600

@@ -1,0 +1,41 @@
+experiment_name: generation_label_audit_qwen27b_voting
+
+input:
+  generation_result_paths:
+    - data/generations/musique_qwen3_5_9b_results.jsonl
+    - data/generations/hotpotqa_supporting_only_qwen3_5_9b_results.jsonl
+    - data/generations/twowiki_supporting_only_qwen3_5_9b_results.jsonl
+    - data/generations/popqa_qwen3_5_9b_results.jsonl
+  transitions: [NN, NY, YN, YY]
+
+sampling:
+  seed: 13
+  max_per_dataset_transition: 
+  resume: true
+
+judge_model:
+  name: Qwen/Qwen3.5-27B
+  base_url: http://localhost:2334/v1
+  api_key: EMPTY
+  timeout: 120
+  max_tokens: 10000
+  temperature: 0.0
+
+audit:
+  include_context: true
+  max_context_chars: 12000
+  voting:
+    enabled: true
+    tie_break: incorrect
+    variants:
+      - strict_semantic
+      - alias_friendly
+      - decomposed_fact
+
+runtime:
+  concurrency: 16
+  log_every: 20
+
+output:
+  path: outputs/audits/generation_label_audit_qwen27b_voting.jsonl
+  summary_path: outputs/audits/generation_label_audit_qwen27b_voting_summary.json

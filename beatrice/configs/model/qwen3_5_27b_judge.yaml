@@ -1,0 +1,10 @@
+name: Qwen/Qwen3.5-27B
+backend: openai_compatible
+api_key: "EMPTY"
+base_url: "http://localhost:2334/v1"
+enable_thinking: false
+timeout: 120
+max_retries: 5
+retry_sleep: 3
+max_tokens: 8192
+temperature: 0.0

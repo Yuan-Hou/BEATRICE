@@ -1,0 +1,65 @@
+experiment_name: baselines_context_withctx_qwen9b
+# Tier-A correctness-detection baselines for the WITH-CONTEXT (RAG) probe.
+# Data block mirrors train_context_question_answer_frozen_fusion_withctx_qwen9b.yaml.
+model_name: Qwen/Qwen3.5-9B
+data:
+  train_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b/musique_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b/hotpotqa_supporting_only_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b/twowiki_supporting_only_features_meta.jsonl
+  validation_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b/musique_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b/hotpotqa_supporting_only_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b/twowiki_supporting_only_features_meta.jsonl
+  train_splits:
+  - train
+  validation_splits:
+  - validation
+  train_partition:
+    enabled: true
+    source_splits: [train]
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: train
+    name: fixed_train
+  validation_partition:
+    enabled: true
+    source_splits: [validation]
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: validation
+    name: fixed_validation
+  eval_meta_sets:
+  - name: test_id
+    # Held-out in-domain TEST group (the honest ID eval; `validation` is the
+    # probe's model-selection split). Carved 50/50 from the validation split.
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b/musique_features_meta.jsonl
+    - data/features_judge_consensus/qwen3_5_9b/hotpotqa_supporting_only_features_meta.jsonl
+    - data/features_judge_consensus/qwen3_5_9b/twowiki_supporting_only_features_meta.jsonl
+    splits: [validation]
+    partition:
+      enabled: true
+      source_splits: [validation]
+      ids_path: configs/sampling/fixed_scope_ids.json
+      group: test
+      name: fixed_test
+  - name: popqa_ood
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b/popqa_features_meta.jsonl
+    splits: [test]
+  - name: nq
+    # extra OOD sets (judge-consensus purified; same examples the fusion probe evaluates)
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b/nq_features_meta.jsonl
+    splits: [validation]
+  - name: triviaqa
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b/triviaqa_features_meta.jsonl
+    splits: [validation]
+probe:
+  segment: answer
+  label_mode: with_context_correct
+  positive_transition: NY
+  threshold: 0.5
+output:
+  output_dir: outputs/predictions/baselines/context_withctx
+  prefix: baselines_context_withctx

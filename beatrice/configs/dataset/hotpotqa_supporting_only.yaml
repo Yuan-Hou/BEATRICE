@@ -1,0 +1,12 @@
+dataset:
+  name: hotpotqa
+  args:
+    config_name: distractor
+    include_splits:
+    - train
+    - validation
+    context_mode: supporting_only
+    max_examples: null
+output_path: data/processed/hotpotqa_supporting_only_all_splits.jsonl
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

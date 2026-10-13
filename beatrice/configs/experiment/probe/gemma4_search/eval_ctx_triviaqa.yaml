@@ -1,0 +1,6 @@
+experiment_name: gemma4_pc_eval_ctx_triviaqa
+data:
+  meta_paths:
+  - data/gemma4/features/gemma4_L26_rd/triviaqa_features_meta_ok.jsonl
+  splits:
+  - validation

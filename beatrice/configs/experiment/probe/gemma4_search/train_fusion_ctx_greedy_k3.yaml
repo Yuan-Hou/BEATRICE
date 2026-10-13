@@ -1,0 +1,82 @@
+experiment_name: gemma4_fusion_ctx_greedy_k3
+model_name: google/gemma-4-E4B-it
+data:
+  train_meta_paths:
+  - data/gemma4/features/gemma4_L26_rd/musique_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/musique_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/rewritten_context_shard0of4_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/rewritten_context_shard1of4_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/rewritten_context_shard2of4_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/rewritten_context_shard3of4_features_meta_ok.jsonl
+  validation_meta_paths:
+  - data/gemma4/features/gemma4_L26_rd/musique_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/musique_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_features_meta_ok.jsonl
+  rag_class_meta_paths: []
+  train_splits:
+  - train
+  validation_splits:
+  - validation
+  validation_partition:
+    enabled: true
+    source_splits:
+    - validation
+    ids_path: configs/sampling/gemma4_scope_ids.json
+    group: validation
+    name: gemma4_validation
+  train_partition:
+    enabled: true
+    source_splits:
+    - train
+    ids_path: configs/sampling/gemma4_scope_ids.json
+    group: train
+    name: gemma4_train
+probe:
+  architecture: context_question_answer_frozen_encoder_fusion
+  max_context_len: 2048
+  context_max_len: 2048
+  question_max_len: 128
+  answer_max_len: 32
+  embed_proj_dim: 32
+  num_res_blocks: 3
+  batch_size: 64
+  epochs: 60
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  num_workers: 0
+  hidden_dim: 128
+  positive_transition: NY
+  label_mode: with_context_correct
+  lr_scheduler_factor: 0.5
+  lr_scheduler_patience: 4
+  min_learning_rate: 1.0e-07
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+  dropout: 0.15
+  hidden_proj_dim: 32
+  pin_memory: false
+  show_progress: true
+  torch_num_threads: 4
+  torch_num_interop_threads: 1
+  use_token_embedding: false
+  use_last_hidden: true
+  modality_dropout: 0.3
+  fusion_hidden_dim: 128
+  branch_checkpoints:
+  - name: hidden
+    checkpoint_path: outputs/gemma4/ctx_L17rd_attn_probes/only_hidden/context_checkpoint.pth
+  - name: attention
+    checkpoint_path: outputs/gemma4/ctx_L17rd_attn_probes/only_attention/context_checkpoint.pth
+  - name: hid_prob
+    checkpoint_path: outputs/gemma4/ctx_L17rd_attn_pairs_probes/hid_prob/context_checkpoint.pth
+  use_attention_mass: true
+output:
+  checkpoint_path: outputs/gemma4/checkpoints/frozen_fusion_context_gemma4_greedy_k3.pth
+  val_prediction_path: outputs/gemma4/predictions/frozen_fusion_context_gemma4_greedy_k3_val.jsonl

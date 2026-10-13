@@ -1,0 +1,28 @@
+checkpoint_path: outputs/checkpoints/frozen_fusion_context_question_answer_withctx_ctxL17rd_attn_pairs6.pth
+data:
+  judge_consensus_purified: true
+  meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_L17_rd/popqa_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_rewritten_context_L17_rd/rewritten_context_cqa_features_meta.jsonl
+  purification_summary_path: data/features_judge_consensus/aligned_rewrite_final_summary.json
+  rag_class_meta_paths: []
+  splits:
+  - test
+experiment_name: eval_fusion_popqa_ctxL17rd_attn_pairs6
+gpu_id: '4'
+model_name: Qwen/Qwen3.5-9B
+output:
+  prediction_path: outputs/predictions/frozen_fusion_context_popqa_ctxL17rd_attn_pairs6_preds.jsonl
+  report_path: outputs/reports/frozen_fusion_context_popqa_ctxL17rd_attn_pairs6.html
+probe:
+  answer_max_len: 32
+  architecture: context_question_answer_frozen_encoder_fusion
+  batch_size: 32
+  context_max_len: 2048
+  embed_proj_dim: 32
+  hidden_dim: 128
+  hidden_proj_dim: 32
+  label_mode: with_context_correct
+  max_context_len: 2048
+  num_res_blocks: 3
+  question_max_len: 128

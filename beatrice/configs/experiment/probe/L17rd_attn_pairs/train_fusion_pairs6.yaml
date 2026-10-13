@@ -1,0 +1,69 @@
+experiment_name: train_qa_frozen_fusion_noctx_L17rd_attn_pairs6
+model_name: Qwen/Qwen3.5-9B
+gpu_id: '3'
+data:
+  train_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_question_L17_rd/musique_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question_L17_rd/hotpotqa_supporting_only_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question_L17_rd/twowiki_supporting_only_question_features_meta.jsonl
+  validation_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_question_L17_rd/musique_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question_L17_rd/hotpotqa_supporting_only_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question_L17_rd/twowiki_supporting_only_question_features_meta.jsonl
+  train_splits:
+  - train
+  validation_splits:
+  - validation
+  judge_consensus_purified: true
+  purification_summary_path: data/features_judge_consensus/aligned_rewrite_final_summary.json
+  train_partition:
+    enabled: true
+    source_splits:
+    - train
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: train
+    name: fixed_train
+  validation_partition:
+    enabled: true
+    source_splits:
+    - validation
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: validation
+    name: fixed_validation
+probe:
+  architecture: question_answer_frozen_encoder_fusion
+  batch_size: 512
+  epochs: 60
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  num_workers: 0
+  hidden_dim: 128
+  fusion_hidden_dim: 128
+  dropout: 0.15
+  modality_dropout: 0.3
+  positive_transition: NY
+  label_mode: without_context_correct
+  lr_scheduler_factor: 0.5
+  lr_scheduler_patience: 4
+  min_learning_rate: 1.0e-07
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+  show_progress: true
+  pin_memory: false
+  branch_checkpoints:
+  - name: hid_prob
+    checkpoint_path: outputs/L17rd_attn_pairs_probes/hid_prob/question_checkpoint.pth
+  - name: hid_resid
+    checkpoint_path: outputs/L17rd_attn_pairs_probes/hid_resid/question_checkpoint.pth
+  - name: hid_attn
+    checkpoint_path: outputs/L17rd_attn_pairs_probes/hid_attn/question_checkpoint.pth
+  - name: prob_resid
+    checkpoint_path: outputs/L17rd_attn_pairs_probes/prob_resid/question_checkpoint.pth
+  - name: prob_attn
+    checkpoint_path: outputs/L17rd_attn_pairs_probes/prob_attn/question_checkpoint.pth
+  - name: resid_attn
+    checkpoint_path: outputs/L17rd_attn_pairs_probes/resid_attn/question_checkpoint.pth
+  use_attention_mass: true
+output:
+  checkpoint_path: outputs/checkpoints/frozen_fusion_question_answer_noctx_L17rd_attn_pairs6.pth
+  val_prediction_path: outputs/predictions/frozen_fusion_question_noctx_L17rd_attn_pairs6_val.jsonl

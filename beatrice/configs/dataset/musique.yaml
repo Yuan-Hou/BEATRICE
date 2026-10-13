@@ -1,0 +1,10 @@
+dataset:
+  name: musique
+  args:
+    include_splits:
+    - train
+    - validation
+    max_examples: null
+output_path: data/processed/musique_train_validation.jsonl
+sample_scope:
+  ids_path: configs/sampling/fixed_scope_ids.json

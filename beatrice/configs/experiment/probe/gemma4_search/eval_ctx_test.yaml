@@ -1,0 +1,18 @@
+experiment_name: gemma4_pc_eval_ctx_test
+data:
+  meta_paths:
+  - data/gemma4/features/gemma4_L26_rd/musique_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/musique_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/hotpotqa_supporting_only_shard1of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard0of2_features_meta_ok.jsonl
+  - data/gemma4/features/gemma4_L26_rd/twowiki_supporting_only_shard1of2_features_meta_ok.jsonl
+  splits:
+  - validation
+  partition:
+    enabled: true
+    source_splits:
+    - validation
+    ids_path: configs/sampling/gemma4_scope_ids.json
+    group: test
+    name: gemma4_test

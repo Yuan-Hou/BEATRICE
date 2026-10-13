@@ -1,0 +1,67 @@
+experiment_name: baselines_question_noctx_qwen9b
+# Tier-A correctness-detection baselines for the QUESTION-ONLY (closed-book) probe.
+# Data block mirrors train_question_answer_frozen_fusion_noctx_qwen9b.yaml so baselines
+# score the exact same examples / labels as the frozen-fusion probe.
+model_name: Qwen/Qwen3.5-9B
+data:
+  train_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_question/musique_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question/hotpotqa_supporting_only_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question/twowiki_supporting_only_question_features_meta.jsonl
+  validation_meta_paths:
+  - data/features_judge_consensus/qwen3_5_9b_question/musique_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question/hotpotqa_supporting_only_question_features_meta.jsonl
+  - data/features_judge_consensus/qwen3_5_9b_question/twowiki_supporting_only_question_features_meta.jsonl
+  train_splits:
+  - train
+  validation_splits:
+  - validation
+  train_partition:
+    enabled: true
+    source_splits: [train]
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: train
+    name: fixed_train
+  validation_partition:
+    enabled: true
+    source_splits: [validation]
+    ids_path: configs/sampling/fixed_scope_ids.json
+    group: validation
+    name: fixed_validation
+  # Add OOD / test sets here; each is scored with the same scorers.
+  eval_meta_sets:
+  - name: test_id
+    # Held-out in-domain TEST group (the honest ID eval; `validation` is the
+    # probe's model-selection split). Carved 50/50 from the validation split.
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b_question/musique_question_features_meta.jsonl
+    - data/features_judge_consensus/qwen3_5_9b_question/hotpotqa_supporting_only_question_features_meta.jsonl
+    - data/features_judge_consensus/qwen3_5_9b_question/twowiki_supporting_only_question_features_meta.jsonl
+    splits: [validation]
+    partition:
+      enabled: true
+      source_splits: [validation]
+      ids_path: configs/sampling/fixed_scope_ids.json
+      group: test
+      name: fixed_test
+  - name: popqa_ood
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b_question/popqa_question_features_meta.jsonl
+    splits: [test]
+  - name: nq
+    # extra OOD sets (judge-consensus purified; same examples the fusion probe evaluates)
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b_question/nq_question_features_meta.jsonl
+    splits: [validation]
+  - name: triviaqa
+    meta_paths:
+    - data/features_judge_consensus/qwen3_5_9b_question/triviaqa_question_features_meta.jsonl
+    splits: [validation]
+probe:
+  segment: answer
+  label_mode: without_context_correct
+  positive_transition: NY
+  threshold: 0.5
+output:
+  output_dir: outputs/predictions/baselines/question_noctx
+  prefix: baselines_question_noctx
